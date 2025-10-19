@@ -380,6 +380,8 @@ canvas.addEventListener('mousedown', async (e) => {
   if (dropPiece(col)) {
     if (checkWin()) {
       onGameOver();
+    } else if (getValidMoves().length === 0) {
+      onDraw();
     } else {
       turn = 3 - turn;
       drawBoard();
@@ -390,6 +392,8 @@ canvas.addEventListener('mousedown', async (e) => {
         if (dropPiece(aiCol)) {
           if (checkWin()) {
             onGameOver();
+          } else if (getValidMoves().length === 0) {
+            onDraw();
           } else {
             turn = 3 - turn;
             drawBoard();
@@ -429,6 +433,29 @@ function onGameOver() {
       drawBoard(false); await sleep(200);
     }
     // show banner then end menu
+    winnerBannerText.textContent = text;
+    winnerBanner.classList.remove('hidden');
+    await sleep(2000);
+    winnerBanner.classList.add('hidden');
+
+    winnerTextEl.textContent = text;
+    gameTimeEl.textContent = formatTime(gameSec);
+    endMenu.classList.remove('hidden');
+  })();
+}
+
+function onDraw() {
+  gameOver = true;
+  drawBoard();
+  const text = `It's a draw!`;
+
+  // add play time
+  const gameSec = (Date.now() - gameStartEpoch) / 1000;
+  totalPlaySeconds += gameSec;
+  updateTotalTimeUI();
+
+  (async () => {
+    // show banner then end menu (no winner flashing)
     winnerBannerText.textContent = text;
     winnerBanner.classList.remove('hidden');
     await sleep(2000);
