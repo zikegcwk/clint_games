@@ -15,6 +15,12 @@ const COLORS = {
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
+function getCanvasScaleX() {
+  // Map from CSS pixels to canvas coordinate space
+  const rect = canvas.getBoundingClientRect();
+  return canvas.width / rect.width;
+}
+
 // UI elements
 const mainMenu = document.getElementById('main-menu');
 const endMenu = document.getElementById('end-menu');
@@ -353,7 +359,8 @@ let hoverX = null; // pixel x for hover disc
 canvas.addEventListener('mousemove', (e) => {
   if (inMainMenu || gameOver) return;
   const rect = canvas.getBoundingClientRect();
-  hoverX = Math.floor(e.clientX - rect.left);
+  const scaleX = getCanvasScaleX();
+  hoverX = Math.floor((e.clientX - rect.left) * scaleX);
   drawTopHover();
 });
 
@@ -365,7 +372,8 @@ canvas.addEventListener('mouseleave', () => {
 canvas.addEventListener('mousedown', async (e) => {
   if (inMainMenu || gameOver) return;
   const rect = canvas.getBoundingClientRect();
-  const x = Math.floor(e.clientX - rect.left);
+  const scaleX = getCanvasScaleX();
+  const x = Math.floor((e.clientX - rect.left) * scaleX);
   const col = Math.floor(x / SQUARE_SIZE);
   if (col < 0 || col >= COLS || !isValidLocation(col)) return;
 

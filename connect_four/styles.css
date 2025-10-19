@@ -21,6 +21,10 @@ body {
 
 #app { position: relative; width: 700px; }
 
+/* Responsive sizing: keep desktop at 700px, shrink on smaller screens */
+#app { width: min(700px, 100vw - 24px); }
+#gameCanvas { width: 100%; height: auto; }
+
 .menu {
   position: absolute;
   inset: 0;
@@ -78,4 +82,13 @@ body {
 .banner.hidden { display: none; }
 .banner span { font-size: 40px; font-weight: 800; }
 
-
+/* Mobile tweaks */
+@media (max-width: 740px) {
+  .title { font-size: 36px; }
+  .winner { font-size: 28px; }
+  .total-time, .game-time { font-size: 16px; }
+  .buttons { gap: 12px; }
+  .btn { padding: 12px 20px; font-size: 16px; }
+  .banner { height: 64px; }
+  .banner span { font-size: 24px; }
+}
