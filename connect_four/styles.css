@@ -1,0 +1,81 @@
+:root {
+  --blue: rgb(65, 105, 225);
+  --crimson: rgb(220, 20, 60);
+  --yellow: rgb(255, 223, 0);
+  --black: #000;
+  --white: #fff;
+  --light-gray: rgb(240, 240, 240);
+  --purple: rgb(75, 0, 130);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--light-gray);
+  color: var(--black);
+  display: grid;
+  place-items: center;
+}
+
+#app { position: relative; width: 700px; }
+
+.menu {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.menu.hidden { display: none; }
+.menu.visible { display: flex; }
+
+.title { font-size: 56px; color: var(--blue); margin: 0; }
+.winner { font-size: 44px; margin: 0; }
+.total-time, .game-time { font-size: 20px; }
+
+.buttons { display: flex; gap: 20px; }
+
+.btn {
+  padding: 16px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.25);
+  transition: transform 120ms ease, filter 120ms ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn.primary { background: var(--blue); }
+.btn.purple { background: var(--purple); }
+.btn.danger { background: var(--crimson); }
+
+#gameCanvas {
+  display: block;
+  background: var(--black);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.banner {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(2px);
+}
+.banner.hidden { display: none; }
+.banner span { font-size: 40px; font-weight: 800; }
+
+

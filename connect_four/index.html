@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connect Four</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="main-menu" class="menu visible">
+        <h1 class="title">Connect Four</h1>
+        <div class="total-time">Total Play Time: <span id="total-play-time">00:00:00</span></div>
+        <div class="buttons">
+          <button id="btn-2p" class="btn primary">2 Players</button>
+          <button id="btn-ai" class="btn purple">VS AI</button>
+        </div>
+        <button id="btn-exit" class="btn danger">Exit Game</button>
+      </div>
+
+      <div id="winner-banner" class="banner hidden">
+        <span id="winner-banner-text"></span>
+      </div>
+
+      <canvas id="gameCanvas" width="700" height="700"></canvas>
+
+      <div id="end-menu" class="menu hidden">
+        <h2 id="winner-text" class="winner"></h2>
+        <div class="game-time">Game Time: <span id="game-time">00:00:00</span></div>
+        <button id="btn-continue" class="btn primary">Continue</button>
+      </div>
+
+      <div id="goodbye" class="menu hidden">
+        <h2>Thanks for playing!</h2>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+  </html>
+
+
