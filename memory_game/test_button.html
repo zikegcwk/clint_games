@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Test</title>
+    <style>
+        .test-level3-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+        
+        .test-level3-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Button Test</h1>
+    <button class="test-level3-btn" id="testLevel3Btn">Test Level 3</button>
+    
+    <script>
+        console.log('Test page loaded');
+        const btn = document.getElementById('testLevel3Btn');
+        console.log('Button found:', btn);
+        
+        if (btn) {
+            btn.addEventListener('click', () => {
+                alert('Test Level 3 button works!');
+                console.log('Button clicked successfully');
+            });
+            console.log('Event listener added');
+        } else {
+            console.error('Button not found!');
+        }
+    </script>
+</body>
+</html> 

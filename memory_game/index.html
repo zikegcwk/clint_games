@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Two Players</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>🧠 Memory Game - Level <span id="levelDisplay">1</span></h1>
+            <div class="level-info">
+                <div class="game-counter">Game <span id="gameCounter">1</span> <span id="gameTotal">of 1</span></div>
+                <div class="score-display">
+                    <span class="score player1-score">Player 1: <span id="score1">0</span></span>
+                    <span class="score player2-score">Player 2: <span id="score2">0</span></span>
+                </div>
+            </div>
+            <div class="game-info">
+                <div class="timer player1-timer">
+                    <span class="player-label">Player 1:</span>
+                    <span class="time-display" id="timer1">00:00</span>
+                </div>
+                <div class="timer player2-timer">
+                    <span class="player-label">Player 2:</span>
+                    <span class="time-display" id="timer2">00:00</span>
+                </div>
+            </div>
+            <button class="reset-btn" id="resetBtn">Reset Game</button>
+            <button class="test-level2-btn" id="testLevel2Btn">Test Level 2</button>
+            <button class="test-level3-btn" id="testLevel3Btn">Test Level 3</button>
+        </header>
+
+        <div class="boards-container">
+            <div class="player-board" id="player1-board">
+                <h2>Player 1</h2>
+                <div class="cards-grid" id="cards1"></div>
+                <div class="status" id="status1">Ready to play!</div>
+            </div>
+
+            <div class="player-board" id="player2-board">
+                <h2>Player 2</h2>
+                <div class="cards-grid" id="cards2"></div>
+                <div class="status" id="status2">Ready to play!</div>
+            </div>
+        </div>
+
+        <div class="game-over-modal" id="gameOverModal">
+            <div class="modal-content">
+                <h2>🎉 Level Complete!</h2>
+                <div class="results">
+                    <div class="player-result">
+                        <span class="player-name">Player 1:</span>
+                        <span class="player-time" id="result1">00:00</span>
+                    </div>
+                    <div class="player-result">
+                        <span class="player-name">Player 2:</span>
+                        <span class="player-time" id="result2">00:00</span>
+                    </div>
+                </div>
+                <div class="winner" id="winner"></div>
+                <button class="next-level-btn" id="nextLevelBtn">Next Level</button>
+            </div>
+        </div>
+
+        <div class="celebration-modal" id="celebrationModal">
+            <div class="celebration-content">
+                <div class="celebration-header">
+                    <h1 class="celebration-title">🎊 CONGRATULATIONS! 🎊</h1>
+                    <div class="celebration-subtitle">You've completed all levels!</div>
+                </div>
+                
+                <div class="champion-section">
+                    <div class="crown">👑</div>
+                    <div class="champion-name" id="championName">Player 1</div>
+                    <div class="champion-title">Memory Game Champion!</div>
+                </div>
+                
+                <div class="final-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Levels Completed:</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Final Winner:</span>
+                        <span class="stat-value" id="finalWinner">Player 1</span>
+                    </div>
+                </div>
+                
+                <div class="level-scores">
+                    <h3>🏆 Level Results</h3>
+                    <div class="level-score-grid">
+                        <div class="level-score-item">
+                            <div class="level-label">Level 1</div>
+                            <div class="level-times">
+                                <div class="player-time-item">
+                                    <span class="player-name">Player 1:</span>
+                                    <span class="time-value" id="level1Player1">--:--</span>
+                                </div>
+                                <div class="player-time-item">
+                                    <span class="player-name">Player 2:</span>
+                                    <span class="time-value" id="level1Player2">--:--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="level-score-item">
+                            <div class="level-label">Level 2</div>
+                            <div class="level-times">
+                                <div class="player-time-item">
+                                    <span class="player-name">Player 1:</span>
+                                    <span class="time-value" id="level2Player1">--:--</span>
+                                </div>
+                                <div class="player-time-item">
+                                    <span class="player-name">Player 2:</span>
+                                    <span class="time-value" id="level2Player2">--:--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="level-score-item">
+                            <div class="level-label">Level 3</div>
+                            <div class="level-times">
+                                <div class="player-time-item">
+                                    <span class="player-name">Player 1:</span>
+                                    <span class="time-value" id="level3Player1">--:--</span>
+                                </div>
+                                <div class="player-time-item">
+                                    <span class="player-name">Player 2:</span>
+                                    <span class="time-value" id="level3Player2">--:--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="celebration-message">
+                    <p>🏆 You've mastered the memory game! 🏆</p>
+                    <p>Ready to challenge yourself again?</p>
+                </div>
+                
+                <button class="play-again-btn" id="playAgainBtn">🎮 Play Again</button>
+            </div>
+            
+            <!-- Celebration particles -->
+            <div class="celebration-particles">
+                <div class="particle">🎉</div>
+                <div class="particle">🎊</div>
+                <div class="particle">🏆</div>
+                <div class="particle">⭐</div>
+                <div class="particle">🎈</div>
+                <div class="particle">🎉</div>
+                <div class="particle">🎊</div>
+                <div class="particle">🏆</div>
+                <div class="particle">⭐</div>
+                <div class="particle">🎈</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=3"></script>
+</body>
+</html> 

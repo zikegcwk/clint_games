@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Level 3 Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .debug-info {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-level3-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+        .test-level3-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .log {
+            background: #333;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Level 3 Button Debug</h1>
+    
+    <div class="debug-info">
+        <h2>Button Test</h2>
+        <button class="test-level3-btn" id="testLevel3Btn">Test Level 3</button>
+        <button class="test-level3-btn" id="testLevel3Btn2">Test Level 3 (Alternative)</button>
+    </div>
+    
+    <div class="debug-info">
+        <h2>Debug Log</h2>
+        <div id="debugLog" class="log"></div>
+    </div>
+    
+    <div class="debug-info">
+        <h2>Button Status</h2>
+        <div id="buttonStatus"></div>
+    </div>
+    
+    <script>
+        const log = document.getElementById('debugLog');
+        const status = document.getElementById('buttonStatus');
+        
+        function addLog(message) {
+            log.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function updateStatus(message) {
+            status.innerHTML = message;
+        }
+        
+        addLog('Debug page loaded');
+        
+        // Test 1: Check if button exists
+        const btn1 = document.getElementById('testLevel3Btn');
+        const btn2 = document.getElementById('testLevel3Btn2');
+        
+        addLog('Button 1 found: ' + (btn1 ? 'YES' : 'NO'));
+        addLog('Button 2 found: ' + (btn2 ? 'YES' : 'NO'));
+        
+        updateStatus(`
+            <p><strong>Button 1:</strong> ${btn1 ? 'Found' : 'NOT FOUND'}</p>
+            <p><strong>Button 2:</strong> ${btn2 ? 'Found' : 'NOT FOUND'}</p>
+        `);
+        
+        // Test 2: Add event listeners
+        if (btn1) {
+            addLog('Adding event listener to Button 1');
+            btn1.addEventListener('click', function() {
+                addLog('Button 1 clicked!');
+                alert('Button 1 works!');
+            });
+            addLog('Event listener added to Button 1');
+        }
+        
+        if (btn2) {
+            addLog('Adding event listener to Button 2');
+            btn2.onclick = function() {
+                addLog('Button 2 clicked!');
+                alert('Button 2 works!');
+            };
+            addLog('onclick handler added to Button 2');
+        }
+        
+        // Test 3: Check button properties
+        if (btn1) {
+            addLog('Button 1 properties:');
+            addLog('- disabled: ' + btn1.disabled);
+            addLog('- style.display: ' + btn1.style.display);
+            addLog('- style.visibility: ' + btn1.style.visibility);
+            addLog('- style.pointerEvents: ' + btn1.style.pointerEvents);
+            addLog('- offsetWidth: ' + btn1.offsetWidth);
+            addLog('- offsetHeight: ' + btn1.offsetHeight);
+        }
+        
+        // Test 4: Simulate click programmatically
+        setTimeout(() => {
+            addLog('Testing programmatic click in 2 seconds...');
+            if (btn1) {
+                btn1.click();
+            }
+        }, 2000);
+        
+        addLog('Debug setup complete');
+    </script>
+</body>
+</html> 

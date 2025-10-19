@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clean Test Page</h1>
+    <p>This page has NO alerts or popups.</p>
+    <button class="test-btn" id="testBtn">Test Button (No Alert)</button>
+    
+    <script>
+        document.getElementById('testBtn').addEventListener('click', function() {
+            console.log('Button clicked - no alert!');
+            document.body.style.backgroundColor = '#e0f7fa';
+            setTimeout(() => {
+                document.body.style.backgroundColor = 'white';
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
