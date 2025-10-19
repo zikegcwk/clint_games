@@ -1,2 +1,94 @@
-<h1>Clint Game here</h1>
-<h2>michael is a huge shit</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clint's Game Collection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4ecca3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .game-card h2 {
+            margin: 0 0 15px 0;
+            color: #4ecca3;
+        }
+
+        .game-card p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        footer {
+            margin-top: 50px;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Clint's Game Collection</h1>
+        
+        <div class="games-grid">
+            <a href="connect_four/index.html" class="game-card">
+                <h2>Connect Four</h2>
+                <p>Classic strategy game where players take turns dropping colored discs. Match 4 in a row to win!</p>
+            </a>
+            
+            <a href="memory_game/index.html" class="game-card">
+                <h2>Memory Game</h2>
+                <p>Test your memory skills! Match pairs of cards in this exciting two-player memory challenge.</p>
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2025 Clint's Games. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
